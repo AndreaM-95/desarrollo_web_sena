@@ -11,7 +11,7 @@ const observer = new IntersectionObserver(entries => {
 
 hiddenSections.forEach(section => observer.observe(section));
 
-const text = "Hola Dev 👋 Bienvenida a tu guía moderna de backend y arquitectura.";
+const text = "Hola Dev, bienvenid@ a tu guía moderna de arquitectura y backend.";
 const typingElement = document.querySelector('.typing-text');
 
 let index = 0;
@@ -29,7 +29,14 @@ window.onload = typeWriter;
 const themeBtn = document.getElementById('theme-toggle');
 
 themeBtn.addEventListener('click', () => {
- document.body.classList.toggle('dark-mode');
+ const isDarkMode = document.body.classList.toggle('dark-mode');
+ themeBtn.innerHTML = isDarkMode
+   ? '<i class="fa-solid fa-sun"></i>'
+   : '<i class="fa-solid fa-moon"></i>';
+ themeBtn.setAttribute(
+   'aria-label',
+   isDarkMode ? 'Activar modo claro' : 'Activar modo oscuro'
+ );
 });
 
 const scrollBtn = document.getElementById('scrollTopBtn');
